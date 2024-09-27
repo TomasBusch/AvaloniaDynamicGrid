@@ -1,0 +1,196 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+		xmlns:dg="clr-namespace:DynamicGrid.Avalonia;assembly=DynamicGrid.Avalonia"
+		
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="DynamicGrid.Sample.MainWindow"
+        Title="DynamicGrid.Sample">
+
+	<ScrollViewer>
+	<dg:DynamicGrid ColumnGap="5" RowGap="5" Margin="10">
+		<Panel Width="100" Height="100" Background="red">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">1</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Magenta">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">2</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Green">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">3</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="blue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">4</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Yellow">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">5</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Violet">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">6</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="YellowGreen">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">7</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Gray">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">8</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="DarkBlue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">9</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="cyan">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">10</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="red">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">11</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Magenta">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">12</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Green">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">13</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="blue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">14</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Yellow">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">15</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Violet">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">16</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="YellowGreen">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">17</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Gray">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">18</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="DarkBlue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">19</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="cyan">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">20</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="red">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">21</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Magenta">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">22</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Green">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">23</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="blue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">24</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Yellow">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">25</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Violet">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">26</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="YellowGreen">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">27</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Gray">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">28</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="DarkBlue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">29</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="cyan">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">30</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Orange">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">31</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Magenta">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">32</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Green">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">33</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="blue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">34</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Yellow">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">35</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Violet">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">36</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="YellowGreen">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">37</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Gray">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">38</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="DarkBlue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">39</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="OrangeRed">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">40</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="red">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">41</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Magenta">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">42</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Green">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">43</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="blue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">44</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Yellow">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">45</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Violet">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">46</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="YellowGreen">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">47</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Gray">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">48</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="DarkBlue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">49</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="cyan">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">50</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="red">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">51</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Magenta">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">52</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Green">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">53</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="blue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">54</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Yellow">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">55</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Violet">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">56</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="YellowGreen">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">57</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="Gray">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">58</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="DarkBlue">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">59</TextBlock>
+		</Panel>
+		<Panel Width="100" Height="100" Background="cyan">
+			<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25">60</TextBlock>
+		</Panel>
+	</dg:DynamicGrid>
+	</ScrollViewer>
+</Window>

@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicGrid.Avalonia", "DynamicGrid.Avalonia.csproj", "{DDA8D3A3-F0FC-42C9-9095-34EB935C371C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicGrid.Sample", "..\DynamicGrid.Sample\DynamicGrid.Sample.csproj", "{29182D89-763D-4210-83D0-FBB34C914288}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B227F0FC-1E30-4736-A682-75F763C6B61B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDA8D3A3-F0FC-42C9-9095-34EB935C371C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDA8D3A3-F0FC-42C9-9095-34EB935C371C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDA8D3A3-F0FC-42C9-9095-34EB935C371C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDA8D3A3-F0FC-42C9-9095-34EB935C371C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29182D89-763D-4210-83D0-FBB34C914288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29182D89-763D-4210-83D0-FBB34C914288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29182D89-763D-4210-83D0-FBB34C914288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29182D89-763D-4210-83D0-FBB34C914288}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3AA16519-379E-4DB3-AC26-0E3F784B0689}
+	EndGlobalSection
+EndGlobal
