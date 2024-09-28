@@ -33,7 +33,13 @@ namespace DynamicGrid.Avalonia
         Auto,
         MinContent,
         MaxContent,
+    }
 
+    public enum ScrollDirection
+    {
+        None,
+        Horizontal,
+        Vertical,
     }
 
     /// <summary>
@@ -77,6 +83,11 @@ namespace DynamicGrid.Avalonia
         private float[] _rowHeights = [];
         private float[] _columnWidths = [];
 
+        private double _maxChildWidth = 0d;
+        private double _maxChildHeight = 0d;
+        private int _childrenCount = 0;
+
+        private ScrollDirection _scrollDirection = ScrollDirection.None;
 
         static DynamicGrid()
         {
@@ -131,37 +142,31 @@ namespace DynamicGrid.Avalonia
 
         protected override Size MeasureOverride(Size availableSize)
         {
+            _scrollDirection = (availableSize.Height == double.PositiveInfinity)
+                ? ScrollDirection.Vertical :
+                (availableSize.Width == double.PositiveInfinity) ?
+                ScrollDirection.Horizontal :
+                ScrollDirection.None;
+            UpdateChildrenData();
             UpdateRowsAndColumns(availableSize);
-
-            var maxWidth = 0d;
-            var maxHeight = 0d;
 
             Size childAvailableSize = new Size(
                 ((availableSize.Width - (_columnGap * (_columns - 1))) / _columns),
                 ((availableSize.Height - (_rowGap * (_rows - 1))) / _rows)
-                );
+            );
 
             foreach (var child in Children)
             {
-                if (!child.IsVisible)
+                if (child.IsVisible)
                 {
-                    continue;
-                }
-
-                child.Measure(childAvailableSize);
-
-                if (child.DesiredSize.Width > maxWidth)
-                {
-                    maxWidth = child.DesiredSize.Width;
-                }
-
-                if (child.DesiredSize.Height > maxHeight)
-                {
-                    maxHeight = child.DesiredSize.Height;
+                    child.Measure(childAvailableSize);
                 }
             }
 
-            return new Size(childAvailableSize.Width * _columns + (_columnGap * (_columns - 1)), maxHeight * _rows + (_rowGap * (_rows - 1)));
+            return new Size(
+                _maxChildWidth * _columns + (_columnGap * (_columns - 1)),
+                _maxChildHeight * _rows + (_rowGap * (_rows - 1))
+            );
         }
 
         protected override Size ArrangeOverride(Size availableSize)
@@ -169,28 +174,8 @@ namespace DynamicGrid.Avalonia
             var x = 0;
             var y = 0;
 
-            var maxChildWidth = 0d;
-            var maxChildHeight = 0d;
-
-            //TODO: Calculate per row
-            foreach (var child in Children)
-            {
-                if (child.IsVisible)
-                {
-                    if (child.DesiredSize.Width > maxChildWidth)
-                    {
-                        maxChildWidth = child.DesiredSize.Width;
-                    }
-
-                    if (child.DesiredSize.Height > maxChildHeight)
-                    {
-                        maxChildHeight = child.DesiredSize.Height;
-                    }
-                }
-            }
-
-            var width = ((availableSize.Width - (_columnGap * (_columns - 1))) / _columns);
-            var height = maxChildHeight;
+            var width = (_scrollDirection != ScrollDirection.Horizontal) ? ((availableSize.Width - (_columnGap * (_columns - 1))) / _columns) : _maxChildWidth;
+            var height = (_scrollDirection != ScrollDirection.Vertical) ? ((availableSize.Height - (_rowGap * (_rows - 1))) / _rows) : _maxChildHeight;
 
             foreach (var child in Children)
             {
@@ -199,21 +184,11 @@ namespace DynamicGrid.Avalonia
                     continue;
                 }
 
-                var colGap = 0f;
-                if (x != 0)
-                {
-                    colGap = _columnGap;
-                }
-
-                var rowGap = 0f;
-                if (y != 0)
-                {
-                    rowGap = _rowGap;
-                }
-
+                var colGap = (x != 0) ? _columnGap : 0f;
+                var rowGap = (y != 0) ? _rowGap : 0f;
                 child.Arrange(new Rect(x * (width + colGap), y * (height + rowGap), width, height));
-
                 x++;
+
                 if (x >= _columns)
                 {
                     x = 0;
@@ -224,6 +199,33 @@ namespace DynamicGrid.Avalonia
             return new Size(availableSize.Width + 500, availableSize.Height);
         }
 
+        private void UpdateChildrenData()
+        {
+            _maxChildWidth = 0;
+            _maxChildHeight = 0;
+            _childrenCount = 0;
+
+            //TODO: Calculate per row
+            foreach (var child in this.Children)
+            {
+                if (child.IsVisible)
+                {
+                    _childrenCount++;
+
+                    if (child.DesiredSize.Width > _maxChildWidth)
+                    {
+                        _maxChildWidth = child.DesiredSize.Width;
+                    }
+
+                    if (child.DesiredSize.Height > _maxChildHeight)
+                    {
+                        _maxChildHeight = child.DesiredSize.Height;
+                    }
+                }
+            }
+
+        }
+
         private void UpdateRowsAndColumns(Size availableSize)
         {
             _rows = 1;
@@ -231,49 +233,35 @@ namespace DynamicGrid.Avalonia
             _columnGap = ColumnGap;
             _rowGap = RowGap;
 
-            var itemCount = 0;
+            _columns = CalculateColumnCount(availableSize);
+            _rows = CalculateRowCount(availableSize);
 
-            foreach (var child in Children)
+            if (availableSize.Width == double.PositiveInfinity)
             {
-                if (child.IsVisible)
-                {
-                    itemCount++;
-                }
+                _columns = Math.Max((int)Math.Ceiling((double)_childrenCount / _rows), 1);
             }
 
-            _columns = CalculateColumnCount(availableSize);
-            _rows = Math.Max((int)Math.Ceiling((double)itemCount / _columns), 1);
+
+            if (availableSize.Height == double.PositiveInfinity)
+            {
+                _rows = Math.Max((int)Math.Ceiling((double)_childrenCount / _columns), 1);
+            }
+            else
+            {
+                //TODO: Take into account the number of items to avoid unnecesary layout jumps
+            }
         }
 
         private int CalculateColumnCount(Size availableSize)
         {
 
-            float maxChildWidth = 0f;
-            float maxChildHeight = 0f;
-
-            foreach (var child in Children)
-            {
-                if (child.IsVisible)
-                {
-                    if (child.DesiredSize.Width > maxChildWidth)
-                    {
-                        maxChildWidth = (float)child.DesiredSize.Width;
-                    }
-
-                    if (child.DesiredSize.Height > maxChildHeight)
-                    {
-                        maxChildHeight = (float)child.DesiredSize.Height;
-                    }
-                }
-            }
-
-            int finalColumnCount = Math.Max((int)Math.Floor(availableSize.Width / maxChildWidth), 1);
+            int finalColumnCount = Math.Max((int)Math.Floor(availableSize.Width / _maxChildWidth), 1);
 
             bool fits = false;
 
             do
             {
-                float sizeWithGap = ((maxChildWidth + _columnGap) * (finalColumnCount - 1)) + maxChildWidth;
+                double sizeWithGap = ((_maxChildWidth + _columnGap) * (finalColumnCount - 1)) + _maxChildWidth;
 
                 if (sizeWithGap > availableSize.Width)
                 {
@@ -296,45 +284,21 @@ namespace DynamicGrid.Avalonia
             return finalColumnCount;
         }
 
-
-        private int CalculateColumns(Size availableSize)
+        private int CalculateRowCount(Size availableSize)
         {
-
-            float maxChildWidth = 0f;
-            float maxChildHeight = 0f;
-
-
-
-
-            foreach (var child in Children)
-            {
-                if (child.IsVisible)
-                {
-                    if (child.DesiredSize.Width > maxChildWidth)
-                    {
-                        maxChildWidth = (float)child.DesiredSize.Width;
-                    }
-
-                    if (child.DesiredSize.Height > maxChildHeight)
-                    {
-                        maxChildHeight = (float)child.DesiredSize.Height;
-                    }
-                }
-            }
-
-            int finalColumnCount = Math.Max((int)Math.Floor(availableSize.Width / maxChildWidth), 1);
+            int finalRowCount = Math.Max((int)Math.Floor(availableSize.Height / _maxChildHeight), 1);
 
             bool fits = false;
 
             do
             {
-                float sizeWithGap = ((maxChildWidth + _columnGap) * (finalColumnCount - 1)) + maxChildWidth;
+                double sizeWithGap = ((_maxChildHeight + _rowGap) * (finalRowCount - 1)) + _maxChildHeight;
 
-                if (sizeWithGap > availableSize.Width)
+                if (sizeWithGap > availableSize.Height)
                 {
-                    if (finalColumnCount != 1)
+                    if (finalRowCount != 1)
                     {
-                        finalColumnCount--;
+                        finalRowCount--;
                     }
                     else
                     {
@@ -348,8 +312,62 @@ namespace DynamicGrid.Avalonia
             }
             while (!fits);
 
-            return finalColumnCount;
+            return finalRowCount;
         }
+
+        //private int CalculateColumns(Size availableSize)
+        //{
+
+        //    float maxChildWidth = 0f;
+        //    float maxChildHeight = 0f;
+
+
+
+
+        //    foreach (var child in Children)
+        //    {
+        //        if (child.IsVisible)
+        //        {
+        //            if (child.DesiredSize.Width > maxChildWidth)
+        //            {
+        //                maxChildWidth = (float)child.DesiredSize.Width;
+        //            }
+
+        //            if (child.DesiredSize.Height > maxChildHeight)
+        //            {
+        //                maxChildHeight = (float)child.DesiredSize.Height;
+        //            }
+        //        }
+        //    }
+
+        //    int finalColumnCount = Math.Max((int)Math.Floor(availableSize.Width / maxChildWidth), 1);
+
+        //    bool fits = false;
+
+        //    do
+        //    {
+        //        float sizeWithGap = ((maxChildWidth + _columnGap) * (finalColumnCount - 1)) + maxChildWidth;
+
+        //        if (sizeWithGap > availableSize.Width)
+        //        {
+        //            if (finalColumnCount != 1)
+        //            {
+        //                finalColumnCount--;
+        //            }
+        //            else
+        //            {
+        //                break;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            fits = true;
+        //        }
+        //    }
+        //    while (!fits);
+
+        //    return finalColumnCount;
+        //}
     }
 }
 
