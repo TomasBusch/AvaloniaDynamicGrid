@@ -8,7 +8,7 @@ This is a custom grid control I created for another personal project and convert
 It is meant to be used with an array or collection of equally sized items (although it will handle differently sized items),
 inside of a ScrollViewer.
 
-![functionality showcase](https://github.com/TomasBusch/AvaloniaDynamicGrid/blob/master/showcase.gif?raw=true)
+![functionality showcase](https://github.com/TomasBusch/AvaloniaDynamicGrid/blob/master/images/showcase.gif?raw=true)
 
 ## Features
 - [x] Dynamic ordering of items.
