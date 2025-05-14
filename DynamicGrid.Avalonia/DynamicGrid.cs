@@ -31,8 +31,8 @@ namespace DynamicGrid.Avalonia
     public enum AutoGrid
     {
         Auto,
-        MinContent,
-        MaxContent,
+        AutoFill,
+        AutoFit,
     }
 
     public enum ScrollDirection
@@ -47,6 +47,30 @@ namespace DynamicGrid.Avalonia
     /// </summary>
     public partial class DynamicGrid : Panel
     {
+        /// <summary>
+        /// Defines the <see cref="RowMaxSize"/> property.
+        /// </summary>
+        public static readonly StyledProperty<int> RowMaxSizeProperty =
+            AvaloniaProperty.Register<DynamicGrid, int>(nameof(RowMaxSize), 0);
+
+        /// <summary>
+        /// Defines the <see cref="RowMinSize"/> property.
+        /// </summary>
+        public static readonly StyledProperty<int> RowMinSizeProperty =
+            AvaloniaProperty.Register<DynamicGrid, int>(nameof(RowMinSize), 0);
+
+        /// <summary>
+        /// Defines the <see cref="ColumnMaxSize"/> property.
+        /// </summary>
+        public static readonly StyledProperty<int> ColumnMaxSizeProperty =
+            AvaloniaProperty.Register<DynamicGrid, int>(nameof(ColumnMaxSize), 0);
+
+        /// <summary>
+        /// Defines the <see cref="ColumnMinSize"/> property.
+        /// </summary>
+        public static readonly StyledProperty<int> ColumnMinSizeProperty =
+            AvaloniaProperty.Register<DynamicGrid, int>(nameof(ColumnMinSize), 0);
+
         /// <summary>
         /// Defines the <see cref="AutoRows"/> property.
         /// </summary>
@@ -74,6 +98,11 @@ namespace DynamicGrid.Avalonia
         private int _rows;
         private int _columns;
 
+        private int _rowMaxSize;
+        private int _rowMinSize;
+        private int _columnMaxSize;
+        private int _columnMinSize;
+
         private int _autoRows;
         private int _autoColumns;
 
@@ -96,6 +125,43 @@ namespace DynamicGrid.Avalonia
                 AutoColumnsProperty,
                 RowGapProperty
                 );
+        }
+
+
+        /// <summary>
+        /// TODO: Documentation
+        /// </summary>
+        public int RowMaxSize
+        {
+            get => GetValue(RowMaxSizeProperty);
+            set => SetValue(RowMaxSizeProperty, value);
+        }
+
+        /// <summary>
+        /// If left as default it will equal RowMaxSize
+        /// </summary>
+        public int RowMinSize
+        {
+            get => GetValue(RowMinSizeProperty);
+            set => SetValue(RowMinSizeProperty, value);
+        }
+
+        /// <summary>
+        /// TODO: Documentation
+        /// </summary>
+        public int ColumnMaxSize
+        {
+            get => GetValue(ColumnMaxSizeProperty);
+            set => SetValue(ColumnMaxSizeProperty, value);
+        }
+
+        /// <summary>
+        /// If left as default it will equal ColumnMaxSize
+        /// </summary>
+        public int ColumnMinSize
+        {
+            get => GetValue(ColumnMinSizeProperty);
+            set => SetValue(ColumnMinSizeProperty, value);
         }
 
         /// <summary>
