@@ -171,6 +171,9 @@ namespace DynamicGrid.Avalonia
 
         protected override Size ArrangeOverride(Size availableSize)
         {
+            UpdateChildrenData();
+            UpdateRowsAndColumns(availableSize);
+
             var x = 0;
             var y = 0;
 
